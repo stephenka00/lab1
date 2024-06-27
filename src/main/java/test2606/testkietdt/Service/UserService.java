@@ -14,7 +14,7 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
     @Autowired
-    private UserMapper userMapper;
+    private UserMapper userMapper = UserMapper.INSTANCE;
     public List<UserDTO> searchUsers(String username,String address){
         List<User> users = userRepository.search(username,address);
         return users.stream().map(userMapper::toUserDTO).collect(Collectors.toList());
